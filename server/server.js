@@ -13,8 +13,13 @@ app.use(express.json()) //dont need bodyParser
 //load the config file
 dotenv.config({path: './config/config.env' })
 
+//use rotues
+app.use("/api/auth", authRoutes);
+app.use("/api/users", usersRoutes);
+app.use("/api/contacts", contactsRoutes);
+
 const PORT = process.env.PORT || 5000;
-const URL = `http://localhost:/${PORT}`;
+const URL = `http://localhost:${PORT}`;
 
 connectDB(); 
 app.listen(PORT, () => console.log("Server is listening at PORT : " + URL ));
