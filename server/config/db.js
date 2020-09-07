@@ -1,10 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const connectDB = async () => {
-
+    //read the mongodb url from .env file.
     const db_url = process.env.mongo_uri;
+
     try {
-      await mongoose.connect( db_url,
+    await mongoose.connect( db_url,
             {            
                retryWrites: false,
                useNewUrlParser : true,
@@ -12,6 +13,7 @@ const connectDB = async () => {
                useFindAndModify : true,
                useCreateIndex: true
             });
+
         console.log("database connected at url " + db_url);
     } 
     catch (error) {
@@ -19,6 +21,7 @@ const connectDB = async () => {
         process.exit(1);
     }
 }
-
 //export it
 module.exports = connectDB;
+
+ 
