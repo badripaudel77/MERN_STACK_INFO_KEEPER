@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
           trim : true,
           required : true
     },
-
+    
     email : {
         type : String,
         trim : true,
@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     date : {
         type : Date,
         default : Date.now
-    }
+    },
 
 });
 

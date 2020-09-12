@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
-const contactsRoutes = require('./routes/contacts');
+const notesRoutes = require('./routes/notes');
 const usersRoutes = require('./routes/users');
 const connectDB = require('./config/db')
 
@@ -18,7 +18,7 @@ dotenv.config({path: './config/config.env' })
 app.use("/", indexRoutes)
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
-app.use("/api/contacts", contactsRoutes);
+app.use("/api/notes", notesRoutes);
 
 //add error for the unsupported routes , if not any of the above routes
 app.use((req, res, next) => {

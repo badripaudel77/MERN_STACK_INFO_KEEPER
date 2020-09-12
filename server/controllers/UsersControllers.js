@@ -32,7 +32,7 @@ const userSignup = async (req, res, next ) => {
 
         try {
             await newUser.save();
-           token = jwt.sign({userId : newUser._id, email : newUser.email},
+            token = jwt.sign({userId : newUser._id, email : newUser.email},
                   process.env.token_secret,
                  {expiresIn : '1h'});
         } 
