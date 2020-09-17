@@ -10,13 +10,14 @@ dotenv.config({path: './config/config.env' });
 
 const userSignup = async (req, res, next ) => {
     const { name, email , password } = req.body;
+    console.log('backend ', req.body);
     
     let doesUserExist;    
     try {
       doesUserExist  = await User.findOne({ email : email });
      
       if(doesUserExist) {
-        return next(new HttpError("user with this email already exists.", 500));
+        return res.status(500).json({message : 'User Already exist.'});
       }
 
       else {
@@ -37,15 +38,16 @@ const userSignup = async (req, res, next ) => {
                  {expiresIn : '1h'});
         } 
         catch (error) {
-            return next(new HttpError("couldn't signup the user." , 500));
+          return res.status(500).json({message : "couldn't signup "});
         }
-        return res.status(200).json({message : 'user created',
-        _id : newUser._id, email : newUser.email, 
+        return res.status(200).json({
+        // _id : newUser._id, email : newUser.email, 
         token});
       }
     } 
     catch (error) {
-        return next(new HttpError("couldn't signup, please try again.", 500));
+      return res.status(500).json({message : "couldn't signup, something went wrong. "});
+
     }
 };
 

@@ -25,11 +25,6 @@ const NoteSchema = new mongoose.Schema({
        required : true
     },
 
-    important : {
-        type : String,
-        default : false
-   },
-
     date : {
         type : Date,
         default : Date.now

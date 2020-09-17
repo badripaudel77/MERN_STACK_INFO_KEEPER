@@ -5,11 +5,13 @@ const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const notesRoutes = require('./routes/notes');
 const usersRoutes = require('./routes/users');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
+const Cors = require('cors');
 
 const app = express();
 
 app.use(express.json()) 
+app.use(Cors());
 
 //load the config file
 dotenv.config({path: './config/config.env' })

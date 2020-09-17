@@ -6,7 +6,7 @@ const auth = (req, res, next) => {
     //see if token is in header
     const token = req.header('x-auth-token');
 
-    if(!token) return next(new HttpError("No token present", 401));
+    if(!token) return res.status(401).json({message : "Token Is not Present."});
     
     try {
         //get the decoded value
@@ -15,7 +15,7 @@ const auth = (req, res, next) => {
         next();
     } 
     catch (error) {
-      return next(new HttpError("Token isn't a valid token", 401));    
+      return res.status(401).json({message : "Token Is not a valid token"});    
     }
 }
 
